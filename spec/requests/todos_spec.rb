@@ -73,15 +73,10 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/todos', params: { title: 'Foobar' }.to_json, headers: headers }
+      before { post '/todos', params: { title: 'Foobar' }.to_json}
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
       end
     end
   end
